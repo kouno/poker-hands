@@ -1,7 +1,11 @@
 module PokerHands
   module HandDetection
     def type
-      if flush?
+      if straight_flush?
+        :straight_flush
+      elsif full_house?
+        :full_house
+      elsif flush?
         :flush
       elsif straight?
         :straight
@@ -14,6 +18,14 @@ module PokerHands
       elsif pair?
         :pair
       end
+    end
+
+    def straight_flush?
+      straight? && flush?
+    end
+
+    def full_house?
+      pair? && three_of_a_kind?
     end
 
     def flush?

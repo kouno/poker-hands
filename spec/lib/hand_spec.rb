@@ -73,5 +73,23 @@ describe PokerHands::Hand do
       subject << PokerHands::Card.new('Q', 'H')
       expect(subject.type).to eq(:flush)
     end
+
+    it "detects full house" do
+      subject << PokerHands::Card.new('8', 'H')
+      subject << PokerHands::Card.new('8', 'C')
+      subject << PokerHands::Card.new('7', 'H')
+      subject << PokerHands::Card.new('7', 'C')
+      subject << PokerHands::Card.new('7', 'S')
+      expect(subject.type).to eq(:full_house)
+    end
+
+    it "detects straight flush" do
+      subject << PokerHands::Card.new('8', 'H')
+      subject << PokerHands::Card.new('9', 'H')
+      subject << PokerHands::Card.new('T', 'H')
+      subject << PokerHands::Card.new('J', 'H')
+      subject << PokerHands::Card.new('Q', 'H')
+      expect(subject.type).to eq(:straight_flush)
+    end
   end
 end
