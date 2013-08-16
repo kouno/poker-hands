@@ -17,6 +17,10 @@ module PokerHands
       end
     end
 
+    def <<(card)
+      @cards << card
+    end
+
     def size
       @cards.size
     end
