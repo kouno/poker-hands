@@ -1,5 +1,7 @@
 module PokerHands
   class Deck
+    attr_accessor :cards
+
     def initialize
       @cards = []
       build_deck
@@ -15,6 +17,10 @@ module PokerHands
 
     def size
       @cards.size
+    end
+
+    def shuffle
+      @cards.shuffle
     end
   end
 end
