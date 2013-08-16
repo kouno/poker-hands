@@ -1,13 +1,19 @@
 module PokerHands
   module HandDetection
     def type
-      if three_of_a_kind?
+      if four_of_a_kind?
+        :four_of_a_kind
+      elsif three_of_a_kind?
         :three_of_a_kind
       elsif two_pair?
         :two_pair
       elsif pair?
         :pair
       end
+    end
+
+    def four_of_a_kind?
+      has_card_x_times(4)
     end
 
     def three_of_a_kind?

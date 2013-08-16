@@ -46,5 +46,14 @@ describe PokerHands::Hand do
       subject << PokerHands::Card.new('A', 'H')
       expect(subject.type).to eq(:three_of_a_kind)
     end
+
+    it "detects four of a kind" do
+      subject << PokerHands::Card.new('8', 'H')
+      subject << PokerHands::Card.new('8', 'C')
+      subject << PokerHands::Card.new('8', 'D')
+      subject << PokerHands::Card.new('8', 'S')
+      subject << PokerHands::Card.new('A', 'H')
+      expect(subject.type).to eq(:four_of_a_kind)
+    end
   end
 end
