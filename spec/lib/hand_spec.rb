@@ -24,7 +24,7 @@ describe PokerHands::Hand do
       subject << PokerHands::Card.new('8', 'H')
       subject << PokerHands::Card.new('8', 'C')
       subject << PokerHands::Card.new('7', 'H')
-      subject << PokerHands::Card.new('10', 'H')
+      subject << PokerHands::Card.new('T', 'H')
       subject << PokerHands::Card.new('A', 'H')
       expect(subject.type).to eq(:pair)
     end
@@ -54,6 +54,15 @@ describe PokerHands::Hand do
       subject << PokerHands::Card.new('8', 'S')
       subject << PokerHands::Card.new('A', 'H')
       expect(subject.type).to eq(:four_of_a_kind)
+    end
+
+    it "detects straight" do
+      subject << PokerHands::Card.new('8', 'H')
+      subject << PokerHands::Card.new('9', 'C')
+      subject << PokerHands::Card.new('T', 'D')
+      subject << PokerHands::Card.new('J', 'S')
+      subject << PokerHands::Card.new('Q', 'H')
+      expect(subject.type).to eq(:straight)
     end
   end
 end

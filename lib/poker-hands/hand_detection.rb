@@ -1,7 +1,9 @@
 module PokerHands
   module HandDetection
     def type
-      if four_of_a_kind?
+      if straight?
+        :straight
+      elsif four_of_a_kind?
         :four_of_a_kind
       elsif three_of_a_kind?
         :three_of_a_kind
@@ -10,6 +12,12 @@ module PokerHands
       elsif pair?
         :pair
       end
+    end
+
+    def straight?
+      @cards.sort!
+      i = PokerHands::Card::VALUES.index(@cards.first.value)
+      PokerHands::Card::VALUES[i + 4] == @cards.last.value
     end
 
     def four_of_a_kind?
