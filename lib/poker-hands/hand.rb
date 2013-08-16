@@ -1,5 +1,7 @@
 module PokerHands
   class Hand
+    include PokerHands::HandDetection
+
     attr_accessor :cards
 
     def initialize

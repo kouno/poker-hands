@@ -18,4 +18,15 @@ describe PokerHands::Hand do
       expect(subject.size).to eq(5)
     end
   end
+
+  context "hands detection" do
+    it "detects a pair" do
+      subject << PokerHands::Card.new('8', 'H')
+      subject << PokerHands::Card.new('8', 'C')
+      subject << PokerHands::Card.new('7', 'H')
+      subject << PokerHands::Card.new('10', 'H')
+      subject << PokerHands::Card.new('A', 'H')
+      expect(subject.type).to eq(:pair)
+    end
+  end
 end
