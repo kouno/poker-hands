@@ -22,5 +22,9 @@ module PokerHands
     def shuffle
       @cards.shuffle
     end
+
+    def draw
+      @cards.pop
+    end
   end
 end
