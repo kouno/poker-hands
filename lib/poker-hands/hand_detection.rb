@@ -1,7 +1,9 @@
 module PokerHands
   module HandDetection
     def type
-      if straight?
+      if flush?
+        :flush
+      elsif straight?
         :straight
       elsif four_of_a_kind?
         :four_of_a_kind
@@ -12,6 +14,10 @@ module PokerHands
       elsif pair?
         :pair
       end
+    end
+
+    def flush?
+      @cards.map(&:suit).uniq.size == 1
     end
 
     def straight?
